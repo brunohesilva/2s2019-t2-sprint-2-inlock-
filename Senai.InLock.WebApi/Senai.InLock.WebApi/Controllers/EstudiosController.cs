@@ -56,7 +56,7 @@ namespace Senai.InLock.WebApi.Controllers
             estudio.EstudioId = id;
             EstudioRepository.Alterar(estudio);
             return Ok();
-        }
+        } 
 
         [Authorize(Roles = "ADMINISTRADOR")]
         [HttpDelete("{id}")]

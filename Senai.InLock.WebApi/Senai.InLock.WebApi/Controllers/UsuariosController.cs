@@ -19,6 +19,7 @@ namespace Senai.InLock.WebApi.Controllers
         [HttpGet]
         public IActionResult ListarTodos()
         {
+            var a = HttpContext.User.Claims;
             return Ok(UsuarioRepository.Listar());
         }
 
