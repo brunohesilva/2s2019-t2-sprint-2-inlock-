@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Senai.Gufos.WebApi
+namespace Senai.InLock.WebApi
 {
     public class Startup
     {
@@ -38,19 +38,19 @@ namespace Senai.Gufos.WebApi
 
                     ValidateLifetime = true,
 
-                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("gufos-chave-autenticacao")),
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("inlock-chave-autenticacao")),
 
                     ClockSkew = TimeSpan.FromMinutes(30),
 
-                    ValidIssuer = "Gufos.WebApi",
+                    ValidIssuer = "InLock.WebApi",
 
-                    ValidAudience = "Gufos.WebApi"
+                    ValidAudience = "InLock.WebApi"
                 };
             });
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "Gufos API", Version = "v1" });
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "InLock API", Version = "v1" });
             });
 
         }
@@ -69,7 +69,7 @@ namespace Senai.Gufos.WebApi
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gufos API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "InLock API V1");
             });
 
             app.UseMvc();

@@ -13,24 +13,24 @@ namespace Senai.InLock.WebApi.Controllers
     [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
-    public class JogosController : ControllerBase
+    public class EstudiosController : ControllerBase
     {
-        JogoRepository JogoRepository = new JogoRepository();
+        EstudioRepository EstudioRepository = new EstudioRepository();
 
-        [Authorize(Roles = "ADMINISTRADOR, CLIENTE")]
+        [Authorize(Roles = "ADMINISTRADOR")]
         [HttpGet]
         public IActionResult Listar()
         {
-            return Ok(JogoRepository.Listar());
+            return Ok(EstudioRepository.Listar());
         }
 
         [Authorize(Roles = "ADMINISTRADOR")]
         [HttpPost]
-        public IActionResult Cadastrar(Jogos jogo)
+        public IActionResult Cadastrar(Estudios estudio)
         {
             try
             {
-                JogoRepository.Cadastrar(jogo);
+                EstudioRepository.Cadastrar(estudio);
                 return Ok();
             }
             catch (Exception ex)
@@ -43,18 +43,18 @@ namespace Senai.InLock.WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
-            Jogos Jogo = JogoRepository.BuscarPorId(id);
-            if (Jogo == null)
+            Estudios Estudio = EstudioRepository.BuscarPorId(id);
+            if (Estudio == null)
                 return NotFound();
-            return Ok(Jogo);
+            return Ok(Estudio);
         }
 
         [Authorize(Roles = "ADMINISTRADOR")]
         [HttpPut("{id}")]
-        public IActionResult Atualizar(int id, Jogos jogo)
+        public IActionResult Atualizar(int id, Estudios estudio)
         {
-            jogo.JogoId = id;
-            JogoRepository.Alterar(jogo);
+            estudio.EstudioId = id;
+            EstudioRepository.Alterar(estudio);
             return Ok();
         }
 
@@ -62,7 +62,7 @@ namespace Senai.InLock.WebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
-            JogoRepository.Deletar(id);
+            EstudioRepository.Deletar(id);
             return Ok();
         }
     }

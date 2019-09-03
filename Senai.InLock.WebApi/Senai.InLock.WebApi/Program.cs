@@ -7,7 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Senai.Gufos.WebApi;
+using Senai.InLock.WebApi;
 
 namespace Senai.InLock.WebApi
 {
